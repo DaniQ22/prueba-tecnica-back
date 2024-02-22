@@ -21,6 +21,6 @@ public interface EnvioMaritimoCrudRepository extends ListCrudRepository<EnvioMar
     @Query(value = "DELETE from envio_maritimo where numero_guia = :numeroGuia", nativeQuery = true)
     void delete (@Param("numeroGuia") String numeroGuia);
 
-    @Query(value = "select * from envio_terrestre where id_cliente = :idCliente")
+    @Query(value = "select * from envio_terrestre where id_cliente = :idCliente", nativeQuery = true)
     List<GroundShipping> getShippingBsByClient(@Param("idCliente") String idCliente);
 }

@@ -6,4 +6,7 @@ public interface PortServiceInt {
 
     ResponseEntity<?> getAll();
 
+    ResponseEntity<?> getById(Integer portId);
+
+
 }

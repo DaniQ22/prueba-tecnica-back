@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class WarehouseRepository implements WarehouseRepositortyInt{
@@ -40,4 +41,12 @@ public class WarehouseRepository implements WarehouseRepositortyInt{
         List<Bodega> bodegas = crud.findAll();
         return mapper.toWarehouses(bodegas);
     }
+
+    @Override
+    public Optional<Warehouse> getById(Integer warehouseId) {
+        Optional<Bodega> bodega = crud.findById(warehouseId);
+        return bodega.map(mapper::toWarehouse);
+    }
+
+
 }

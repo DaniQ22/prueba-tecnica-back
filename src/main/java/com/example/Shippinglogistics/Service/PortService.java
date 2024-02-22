@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PortService implements PortServiceInt{
@@ -31,5 +32,20 @@ public class PortService implements PortServiceInt{
         }catch (Exception e){
             return ResponseEntity.internalServerError().build();
         }
+    }
+
+    @Override
+    public ResponseEntity<?> getById(Integer portId){
+        try {
+            Optional<Port> port = respositoryInt.getPorById(portId);
+            if(port.isPresent()){
+                return ResponseEntity.status(HttpStatus.OK).body(port);
+            }else {
+                return ResponseEntity.notFound().build();
+            }
+        }catch (Exception e){
+            return ResponseEntity.internalServerError().build();
+        }
+
     }
 }

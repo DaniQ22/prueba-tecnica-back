@@ -6,5 +6,7 @@ public interface WarehouseServiceInt {
 
     ResponseEntity<?> getAll();
 
+    ResponseEntity<?> getByID(Integer warehouseId);
+
 
 }

@@ -5,6 +5,7 @@ import com.example.Shippinglogistics.entitys.Bodega;
 import org.apache.catalina.LifecycleState;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface WarehouseRepositortyInt {
 
@@ -13,4 +14,6 @@ public interface WarehouseRepositortyInt {
     boolean existWarehouse(Integer warehouseId);
 
     List<Warehouse> getAll();
+
+    Optional<Warehouse> getById(Integer warehouseId);
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class PortRepository implements PortRespositoryInt{
@@ -37,5 +38,11 @@ public class PortRepository implements PortRespositoryInt{
     public List<Port> getAll() {
         List< Puerto> puertos = crud.findAll();
         return mapper.toPorts(puertos);
+    }
+
+    @Override
+    public Optional<Port> getPorById(Integer portId) {
+        Optional<Puerto> puerto = crud.findById(portId);
+        return puerto.map(mapper::toPort);
     }
 }

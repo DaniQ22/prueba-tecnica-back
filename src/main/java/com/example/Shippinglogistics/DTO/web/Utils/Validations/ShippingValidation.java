@@ -32,8 +32,8 @@ public class ShippingValidation {
         if(maritimeShipping.getQuantityProduct()<=0){
             throw new MessageException("Debe ingresar una cantidad valida");
         }
-        if(!isValidLicensePlate(maritimeShipping.getFleetNumber())){
-            throw new MessageException("La placa de vehículo no cumple con el formato requerido Ej:(ABC123)");
+        if(!isValidFleetNumber(maritimeShipping.getFleetNumber())){
+            throw new MessageException("El numero de flota no cimeple con el formato requerido Ej:(ABC1234A)");
         }
         return true;
 
@@ -44,5 +44,11 @@ public class ShippingValidation {
         // Expresión regular para validar el formato de la placa de vehículo
         String regex = "^[A-Z]{3}\\d{3}$"; // Tres letras seguidas de tres dígitos
         return licensePlate.matches(regex);
+    }
+
+    private static boolean isValidFleetNumber(String fleetNumber) {
+        // Expresión regular para validar el formato de la placa de vehículo
+        String regex = "^[A-Z]{3}\\d{4}[A-Z]$"; // Tres letras seguidas de cuatro dígitos y finalizando con una letra
+        return fleetNumber.matches(regex);
     }
 }
